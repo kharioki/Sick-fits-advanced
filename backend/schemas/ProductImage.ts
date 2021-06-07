@@ -3,24 +3,24 @@ import { text, relationship } from '@keystone-next/fields';
 import { cloudinaryImage } from '@keystone-next/cloudinary';
 
 export const cloudinary = {
-    cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-    apiKey: process.env.CLOUDINARY_KEY,
-    apiSecret: process.env.CLOUDINARY_SECRET,
-    folder: 'sickfits2',
+  cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+  apiKey: process.env.CLOUDINARY_KEY,
+  apiSecret: process.env.CLOUDINARY_SECRET,
+  folder: 'sickfits2',
 };
 
 export const ProductImage = list({
-    fields: {
-        image: cloudinaryImage({
-            cloudinary,
-            label: 'source'
-        }),
-        altText: text(),
-        product: relationship({ ref: 'Product.photo' }),
+  fields: {
+    image: cloudinaryImage({
+      cloudinary,
+      label: 'source',
+    }),
+    altText: text(),
+    product: relationship({ ref: 'Product.photo' }),
+  },
+  ui: {
+    listView: {
+      initialColumns: ['image', 'altText', 'product'],
     },
-    ui: {
-        listView: {
-            initialColumns: ['image', 'altText', 'product'],
-        },
-    },
+  },
 });
