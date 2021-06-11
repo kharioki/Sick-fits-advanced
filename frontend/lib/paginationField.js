@@ -4,7 +4,7 @@ export default function paginationField() {
   return {
     keyArgs: false, // this tells apollo we will take care of everything
     read(existing = [], { args, cache }) {
-      console.log({ existing, args, cache });
+      // console.log({ existing, args, cache });
       const { skip, first } = args;
 
       // Read the number of items on the page from the cache
@@ -30,7 +30,7 @@ export default function paginationField() {
       }
       // if there are items, return them from cache
       if (items.length) {
-        console.log(`There are ${items.length} items in the cache!`);
+        // console.log(`There are ${items.length} items in the cache!`);
         return items;
       }
 
@@ -47,7 +47,7 @@ export default function paginationField() {
       for (let i = skip; i < skip + incoming.length; ++i) {
         merged[i] = incoming[i - skip];
       }
-      console.log({ merged });
+      // console.log({ merged });
 
       // finally return merged items from cache
       return merged;
