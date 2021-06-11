@@ -16,7 +16,6 @@ const PAGINATION_QUERY = gql`
 
 export default function Pagination({ page }) {
   const { error, loading, data } = useQuery(PAGINATION_QUERY);
-  console.log(data);
   if (loading) return <p>Loading...</p>;
   if (error) return <DisplayError error={error} />;
   const { count } = data._allProductsMeta;
@@ -25,7 +24,6 @@ export default function Pagination({ page }) {
     <PaginationStyles>
       <Head>
         <title>Sick Fits - Page {page} of ___ </title>
-        <p>Pagination</p>
       </Head>
       <Link href={`/products/${page - 1}`}>
         <a aria-disabled={page <= 1}>&#8592; Prev</a>
